@@ -1,0 +1,19 @@
+<h1>My Festivals</h1>
+
+<ul>
+  <% @festivals.each do |fest| %>
+  
+  <li>
+    <%= link_to fest.name, "/MyFestivals/#{fest.id}"%>
+    <%= fest.city %>
+    <%= fest.state %>
+    <%= link_to "edit", "/MyFestivals/#{fest.id}/edit"%>
+    <%= link_to "delete", "/MyFestivals/#{fest.id}", :method => :delete, :confirm => "are you sure?" %>
+  </li>
+  
+  
+  <% end %>
+  
+<p><%= link_to "Add new festival", "/MyFestivals/new" %></p>  
+  
+</ul>
