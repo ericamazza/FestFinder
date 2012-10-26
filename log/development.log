@@ -1980,3 +1980,74 @@ Served asset /jquery_ujs.js - 304 Not Modified (0ms)
 
 Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-10-25 18:33:14 -0500
 Served asset /application.js - 304 Not Modified (0ms)
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+  [1m[36m (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Migrating to CreateFestivals (20121025161928)
+Migrating to AddMoreStuffToFestivals (20121026002634)
+  [1m[35m (0.0ms)[0m  select sqlite_version(*)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  ALTER TABLE "festivals" ADD "ticket_cost" integer
+  [1m[36m (0.1ms)[0m  [1mALTER TABLE "festivals" ADD "country" varchar(255)[0m
+  [1m[35m (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20121026002634')
+  [1m[36m (41.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.3ms)[0m  select sqlite_version(*)
+  [1m[36m (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+  [1m[35m (0.0ms)[0m  PRAGMA index_list("festivals")
+Connecting to database specified by database.yml
+  [1m[36m (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+  [1m[35m (0.1ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations" 
+Migrating to AddMoreStuffToFestivals (20121026002634)
+  [1m[36m (0.0ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.6ms)[0m  [1mCREATE TEMPORARY TABLE "altered_festivals" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "date" datetime, "city" varchar(255), "state" varchar(255), "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "ticket_cost" integer, "country" varchar(255)) [0m
+  [1m[35m (0.0ms)[0m  PRAGMA index_list("festivals")
+  [1m[36m (0.1ms)[0m  [1mSELECT * FROM "festivals"[0m
+  [1m[35m (0.1ms)[0m  INSERT INTO "altered_festivals" ("id","name","date","city","state","created_at","updated_at","ticket_cost","country") VALUES (1, 'Bonnaroo', NULL, 'Manchester', 'TN', '2012-10-25 16:28:18.378634', '2012-10-25 16:28:18.378634', NULL, NULL)
+  [1m[36m (0.0ms)[0m  [1mINSERT INTO "altered_festivals" ("id","name","date","city","state","created_at","updated_at","ticket_cost","country") VALUES (2, 'Lollapalooza', NULL, 'Chicago', 'IL', '2012-10-25 16:29:07.238617', '2012-10-25 16:29:07.238617', NULL, NULL)[0m
+  [1m[35m (0.0ms)[0m  INSERT INTO "altered_festivals" ("id","name","date","city","state","created_at","updated_at","ticket_cost","country") VALUES (3, 'Coachella', '2004-12-13 00:00:00.000000', 'Indio', 'CA', '2012-10-25 16:31:02.798940', '2012-10-25 19:13:00.254972', NULL, NULL)
+  [1m[36m (0.0ms)[0m  [1mINSERT INTO "altered_festivals" ("id","name","date","city","state","created_at","updated_at","ticket_cost","country") VALUES (4, 'SXSW', NULL, 'Austin', 'TX', '2012-10-25 16:31:36.284419', '2012-10-25 16:31:36.284419', NULL, NULL)[0m
+  [1m[35m (0.4ms)[0m  DROP TABLE "festivals"
+  [1m[36m (0.1ms)[0m  [1mCREATE TABLE "festivals" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "date" datetime, "city" varchar(255), "state" varchar(255), "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "ticket_cost" integer) [0m
+  [1m[35m (0.0ms)[0m  PRAGMA index_list("altered_festivals")
+  [1m[36m (0.1ms)[0m  [1mSELECT * FROM "altered_festivals"[0m
+  [1m[35m (0.0ms)[0m  INSERT INTO "festivals" ("id","name","date","city","state","created_at","updated_at","ticket_cost") VALUES (1, 'Bonnaroo', NULL, 'Manchester', 'TN', '2012-10-25 16:28:18.378634', '2012-10-25 16:28:18.378634', NULL)
+  [1m[36m (0.0ms)[0m  [1mINSERT INTO "festivals" ("id","name","date","city","state","created_at","updated_at","ticket_cost") VALUES (2, 'Lollapalooza', NULL, 'Chicago', 'IL', '2012-10-25 16:29:07.238617', '2012-10-25 16:29:07.238617', NULL)[0m
+  [1m[35m (0.0ms)[0m  INSERT INTO "festivals" ("id","name","date","city","state","created_at","updated_at","ticket_cost") VALUES (3, 'Coachella', '2004-12-13 00:00:00.000000', 'Indio', 'CA', '2012-10-25 16:31:02.798940', '2012-10-25 19:13:00.254972', NULL)
+  [1m[36m (0.0ms)[0m  [1mINSERT INTO "festivals" ("id","name","date","city","state","created_at","updated_at","ticket_cost") VALUES (4, 'SXSW', NULL, 'Austin', 'TX', '2012-10-25 16:31:36.284419', '2012-10-25 16:31:36.284419', NULL)[0m
+  [1m[35m (0.3ms)[0m  DROP TABLE "altered_festivals"
+  [1m[36m (0.1ms)[0m  [1mCREATE TEMPORARY TABLE "altered_festivals" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "date" datetime, "city" varchar(255), "state" varchar(255), "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "ticket_cost" integer) [0m
+  [1m[35m (0.0ms)[0m  PRAGMA index_list("festivals")
+  [1m[36m (0.1ms)[0m  [1mSELECT * FROM "festivals"[0m
+  [1m[35m (0.0ms)[0m  INSERT INTO "altered_festivals" ("id","name","date","city","state","created_at","updated_at","ticket_cost") VALUES (1, 'Bonnaroo', NULL, 'Manchester', 'TN', '2012-10-25 16:28:18.378634', '2012-10-25 16:28:18.378634', NULL)
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "altered_festivals" ("id","name","date","city","state","created_at","updated_at","ticket_cost") VALUES (2, 'Lollapalooza', NULL, 'Chicago', 'IL', '2012-10-25 16:29:07.238617', '2012-10-25 16:29:07.238617', NULL)[0m
+  [1m[35m (0.0ms)[0m  INSERT INTO "altered_festivals" ("id","name","date","city","state","created_at","updated_at","ticket_cost") VALUES (3, 'Coachella', '2004-12-13 00:00:00.000000', 'Indio', 'CA', '2012-10-25 16:31:02.798940', '2012-10-25 19:13:00.254972', NULL)
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "altered_festivals" ("id","name","date","city","state","created_at","updated_at","ticket_cost") VALUES (4, 'SXSW', NULL, 'Austin', 'TX', '2012-10-25 16:31:36.284419', '2012-10-25 16:31:36.284419', NULL)[0m
+  [1m[35m (0.2ms)[0m  DROP TABLE "festivals"
+  [1m[36m (0.1ms)[0m  [1mCREATE TABLE "festivals" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "date" datetime, "city" varchar(255), "state" varchar(255), "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (0.0ms)[0m  PRAGMA index_list("altered_festivals")
+  [1m[36m (0.1ms)[0m  [1mSELECT * FROM "altered_festivals"[0m
+  [1m[35m (0.0ms)[0m  INSERT INTO "festivals" ("id","name","date","city","state","created_at","updated_at") VALUES (1, 'Bonnaroo', NULL, 'Manchester', 'TN', '2012-10-25 16:28:18.378634', '2012-10-25 16:28:18.378634')
+  [1m[36m (0.0ms)[0m  [1mINSERT INTO "festivals" ("id","name","date","city","state","created_at","updated_at") VALUES (2, 'Lollapalooza', NULL, 'Chicago', 'IL', '2012-10-25 16:29:07.238617', '2012-10-25 16:29:07.238617')[0m
+  [1m[35m (0.0ms)[0m  INSERT INTO "festivals" ("id","name","date","city","state","created_at","updated_at") VALUES (3, 'Coachella', '2004-12-13 00:00:00.000000', 'Indio', 'CA', '2012-10-25 16:31:02.798940', '2012-10-25 19:13:00.254972')
+  [1m[36m (0.0ms)[0m  [1mINSERT INTO "festivals" ("id","name","date","city","state","created_at","updated_at") VALUES (4, 'SXSW', NULL, 'Austin', 'TX', '2012-10-25 16:31:36.284419', '2012-10-25 16:31:36.284419')[0m
+  [1m[35m (0.2ms)[0m  DROP TABLE "altered_festivals"
+  [1m[36m (0.1ms)[0m  [1mDELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = '20121026002634'[0m
+  [1m[35m (4.1ms)[0m  commit transaction
+  [1m[36m (0.2ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations" 
+  [1m[36m (0.0ms)[0m  [1mPRAGMA index_list("festivals")[0m
+Connecting to database specified by database.yml
+  [1m[36m (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Migrating to CreateFestivals (20121025161928)
+Migrating to AddMoreStuffToFestivals (20121026002634)
+  [1m[35m (0.0ms)[0m  select sqlite_version(*)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  ALTER TABLE "festivals" ADD "ticket_cost" integer
+  [1m[36m (0.1ms)[0m  [1mALTER TABLE "festivals" ADD "country" varchar(255)[0m
+  [1m[35m (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20121026002634')
+  [1m[36m (42.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.3ms)[0m  select sqlite_version(*)
+  [1m[36m (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+  [1m[35m (0.0ms)[0m  PRAGMA index_list("festivals")
